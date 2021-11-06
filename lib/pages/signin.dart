@@ -4,6 +4,7 @@ import 'package:chat_app/service/database.dart';
 import 'package:chat_app/theme.dart';
 import 'package:chat_app/widgets/widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -21,6 +22,7 @@ class _SignInState extends State<SignIn> {
   TextEditingController passwordTextEditingController = new TextEditingController(text: '');
   bool isLoading = false;
   QuerySnapshot snapshotUserInfo;
+
 
   signIn() async{
     if(formKey.currentState.validate()){
@@ -47,14 +49,14 @@ class _SignInState extends State<SignIn> {
 
       HelperFunctions.saveUserEmailSharedPreference(snapshotUserInfo.docs[0].data()['email']);
 
-
-      
-
     }
   }
 
+
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: appBarMain(context),
       body: SingleChildScrollView(

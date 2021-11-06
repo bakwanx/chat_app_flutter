@@ -44,7 +44,6 @@ class DatabaseMethods{
     return await firestore.collection('ChatRoom')
         .doc(chatRoomId)
         .collection('chats')
-        .orderBy('time', descending: false)
         .snapshots();
   }
 
